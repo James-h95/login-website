@@ -7,7 +7,7 @@ def home_page():
 
 @app.route('/about/<username>')
 def about_page(username):
-    return f'<h1>Page about {username}</h1>'
+    return f'<h1>Page about: {username}</h1>'
 
 #Dynamic routes
 
