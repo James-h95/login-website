@@ -4,5 +4,23 @@
 {% endblock %}
 
 {% block content %}
-  <h1> Register form</h1>
+<body class="text-center">
+    <div class="container">
+      <form method="POST" class="form-register" style="color:white">
+        <h1> Please create your Account</h1>
+        <br>
+        {{ form.username.label() }} 
+        {{ form.username(class="form-control", placeholder="User Name") }}
+
+        {{ form.email.label() }} 
+        {{ form.email(class="form-control", placeholder="Email Address") }}
+
+        {{ form.password1.label() }} 
+        {{ form.password1(class="form-control", placeholder="Password") }}
+
+        {{ form.password2.label() }} 
+        {{ form.password2(class="form-control", placeholder="Confirm Password") }}
+      </form>
+    </div>
+  </body>
 {% endblock %}
