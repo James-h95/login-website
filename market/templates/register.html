@@ -4,10 +4,16 @@
 {% endblock %}
 
 {% block content %}
+
+
+
+
 <body class="text-center">
     <div class="container">
       <form method="POST" class="form-register" style="color:white">
-        <h1> Please create your Account</h1>
+        {{form.hidden_tag()}} <!-- Protects against attack(CRMG) by generating token -->
+      <img class="mb-4 mt-2" style="margin-left:0" src="static/monochrome.png" height="106">
+        <h1 class="h3 mb-2 font-weight-normal"> Please create your Account</h1>
         <br>
         {{ form.username.label() }} 
         {{ form.username(class="form-control", placeholder="User Name") }}
@@ -20,6 +26,9 @@
 
         {{ form.password2.label() }} 
         {{ form.password2(class="form-control", placeholder="Confirm Password") }}
+        
+        <br>
+        {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
       </form>
     </div>
   </body>
