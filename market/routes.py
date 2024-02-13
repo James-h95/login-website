@@ -20,7 +20,7 @@ def register_page():
     if form.validate_on_submit(): # Verify to execute only after user press submit
         user_to_create = User(username=form.username.data, 
                               email_address=form.email_address.data, 
-                              password_hash=form.password1.data) 
+                              password=form.password1.data) 
 
         
         db.session.add(user_to_create)
@@ -30,3 +30,7 @@ def register_page():
         for err_msg in form.errors.values():
             flash(f'There was an error with creating a user: {err_msg}', category='danger')
     return render_template('register.html', form=form)
+
+@app.route('/login',methods=['GET','POST'])
+def login_page():
+    return render_template('login.html')

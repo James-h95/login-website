@@ -1,6 +1,7 @@
 # Model (table in db)
 #Considered as a table to the Flask App'''
 from market import db
+from market import bcrypt
 
 class User(db.Model):
     id = db.Column(db.Integer(), primary_key=True) # Needed for SQLAlchemy to understand each row in database
@@ -10,7 +11,13 @@ class User(db.Model):
     balance = db.Column(db.Integer(), nullable=False, default = 1000)
     items = db.relationship('Item', backref='owned_user', lazy=True) #Allows us to see the owner of specific item
 
-
+    @property
+    def password(self):
+        return self.password
+    
+    @password.setter
+    def password(self, plaintext_password):
+        self.password_hash = bcrypt.generate_password_hash(plaintext_password).decode('utf-8')
 
 class Item(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
