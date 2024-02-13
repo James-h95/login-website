@@ -19,12 +19,12 @@ def register_page():
     form = RegisterForm() #create instance of it
     if form.validate_on_submit(): # Verify to execute only after user press submit
         user_to_create = User(username=form.username.data, 
-                              email_address=form.email.data, 
+                              email_address=form.email_address.data, 
                               password_hash=form.password1.data) 
 
-        with app.app_context:
-            db.session.add(user_to_create)
-            db.session.commit()
+        
+        db.session.add(user_to_create)
+        db.session.commit()
         return redirect(url_for('market_page'))
     if form.errors != {}: #if there are errors from validations
         for err_msg in form.errors.values():
