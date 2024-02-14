@@ -17,6 +17,13 @@ class User(db.Model, UserMixin):
     items = db.relationship('Item', backref='owned_user', lazy=True) #Allows us to see the owner of specific item
 
     @property
+    def prettier_balance(self):
+        if len(str(self.balance)) >= 4:
+            return f'${str(self.balance)[:-3]},{str(self.balance)[-3:]}'
+        else:
+            return f"${self.budget}"
+    
+    @property
     def password(self):
         return self.password
     
