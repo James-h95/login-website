@@ -3,7 +3,7 @@
 Market Page
 {%endblock%}
 {% block content %}
-{% include 'includes/items_modals.html' %}
+
 <div class="row" style="margin-top: 20px; margin-left: 20px;">
    <div class="col-8">
       <h2> Available Items on the Market</h2>
@@ -25,14 +25,15 @@ Market Page
             <!-- Iterate over items list of dicts-->
             <!-- Each tr tag responsible for filling values of 1 row-->
             {% for item in items %} <!-- % allows us to write logic python esque code-->
+            {% include 'includes/items_modals.html' %} <!-- To customise modal for each item. Gives access to each item.-->
             <tr>
                <td>{{item.id}}</td>
                <td>{{item.name}}</td>
                <td>{{item.barcode}}</td>
                <td>${{item.price}}</td>
                <td>
-                  <button class="btn btn-outline btn-info" data-toggle="modal" data-target="#Modal-MoreInfo"> More Info</button>
-                  <button class="btn btn-outline btn-success"> Purchase this item</button>
+                  <button class="btn btn-outline btn-info" data-toggle="modal" data-target="#Modal-MoreInfo-{{ item.id }}"> More Info</button>
+                  <button class="btn btn-outline btn-success" data-toggle="modal" data-target="#Modal-PurchaseConfirm-{{ item.id }}"> Purchase this item</button>
                </td>
             </tr>
             {% endfor %}
