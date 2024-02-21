@@ -21,7 +21,7 @@ class User(db.Model, UserMixin):
         if len(str(self.balance)) >= 4:
             return f'${str(self.balance)[:-3]},{str(self.balance)[-3:]}'
         else:
-            return f"${self.budget}"
+            return f"${self.balance}"
     
     @property
     def password(self):
