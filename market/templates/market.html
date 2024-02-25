@@ -60,6 +60,10 @@ Market Page
          <div style="margin-bottom: 5px" class="card text-center bg-dark">
             <div class="card-body">
                 <h5 class="card-title">{{ item.name }}</h5>
+               {% if item.origin_code %}
+                  <span class="flag-icon flag-icon-{{ item.origin_code }} flag-icon-squared mb-2" style="font-size: 2em;"></span>
+                  <br>
+               {% endif %}
                 <button type="button" class="btn btn-outline-danger" style="margin-bottom: 5px"
                 data-toggle="modal" data-target="#Modal-SellingConfirm-{{ item.id }}">
                     Sell this item
@@ -67,6 +71,7 @@ Market Page
                 <p class="card-text"><strong>
                     Item price: ${{ item.price}}
                 </strong></p>
+
             </div>
         </div>
       </div>
