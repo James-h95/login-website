@@ -16,6 +16,7 @@ Market Page
                <th scope="col">ID</th>
                <th scope="col">Name</th>
                <th scope="col">Barcode</th>
+               <th scope="col">Origin</th>
                <th scope="col">Price</th>
                <th scope="col">Options</th>
             </tr>
@@ -30,6 +31,11 @@ Market Page
                <td>{{item.id}}</td>
                <td>{{item.name}}</td>
                <td>{{item.barcode}}</td>
+               {% if item.origin_code %}
+                  <td><span class="flag-icon flag-icon-{{ item.origin_code }} flag-icon-squared" style="font-size: 1.54em;"></span></td>
+               {% else %}
+                  <td>Unknown</td>
+               {% endif %}
                <td>${{item.price}}</td>
                <td>
                   <button class="btn btn-outline btn-info" data-toggle="modal" data-target="#Modal-MoreInfo-{{ item.id }}"> More Info</button>
@@ -41,10 +47,31 @@ Market Page
       </table>
    </div>
 
-
+   <!-- Display the items owned by curr user-->
    <div class="col-4">
     <h2> Owned items </h2>
-    <p> Click on sell item to put it back on the market</p>
+    <p> Your owned items will appear here.</p> <!-- Set up this logic, only include this statement if user has no items-->
+    <br>
+    <div class="row">
+      {% for item in owned_items %}
+      {% include 'includes/owned_items_modals.html' %}
+      <div class="col-md-6">
+         <!-- Html code responsible to create bootstrap-->
+         <div style="margin-bottom: 5px" class="card text-center bg-dark">
+            <div class="card-body">
+                <h5 class="card-title">{{ item.name }}</h5>
+                <button type="button" class="btn btn-outline-danger" style="margin-bottom: 5px"
+                data-toggle="modal" data-target="#Modal-SellingConfirm-{{ item.id }}">
+                    Sell this item
+                </button>
+                <p class="card-text"><strong>
+                    Item price: ${{ item.price}}
+                </strong></p>
+            </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
   </div>
 
 </div>
