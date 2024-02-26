@@ -23,6 +23,7 @@
       </div>
       <div class="modal-body">
         {{ item.description }}
+        <p>Country of Origin: {{ item.origin_decoder() }}</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary"

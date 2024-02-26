@@ -3,6 +3,8 @@
 from market import db,login_manager
 from market import bcrypt
 from flask_login import UserMixin
+import pycountry
+
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -63,5 +65,12 @@ class Item(db.Model):
         self.owner = None # remove ownership
         user.balance += self.price
         db.session.commit()
+    
+    def origin_decoder(self):
+        country = pycountry.countries.get(alpha_2=self.origin_code.upper()).name
+        if country:
+            return country
+        return "Unknown"
+        
         
     
