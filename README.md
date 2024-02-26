@@ -1,4 +1,4 @@
-**Introductory Flask web app project following on from JSC's Flask tutorial**
+**Flask market web app following on JSC's Flask tutorial**
 
 _HOW TO RUN:_
 - Ensure Flask installed
