@@ -1,10 +1,10 @@
-**Introductory Flask web app project following on from JSC's Flask tutorial**
+_**Introductory Flask web app project following on from JSC's Flask tutorial**_
 
-HOW TO RUN:
+_HOW TO RUN:_
 - Ensure Flask installed
 - Run 'python run.py' in terminal
 
-CONTENTS:
+_CONTENTS:_
 - Market with items with each item having a listed price, origin, name and options to either buy or read more detailed info for each.
 - Owned items can be sold which will be put back on the market 
 - The price of each item remains static (unchanging)
